@@ -25,7 +25,7 @@ public abstract class AbstractScheduleExecutor implements ScheduleExecutor {
     protected abstract <V extends FutureTaskResult> Future<V> submit(RetryTask<V> command,long delay,
                                                                   TimeUnit unit);
     @Override
-    public <V> V execute(DelayTask<V> command) {
+    public <V> Future<V>  execute(DelayTask<V> command) {
         return null;
     }
 

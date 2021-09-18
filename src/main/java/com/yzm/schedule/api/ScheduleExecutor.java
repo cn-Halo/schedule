@@ -17,7 +17,7 @@ public interface ScheduleExecutor extends Executor {
      * @param <V>
      * @return
      */
-    <V> V execute(DelayTask<V> command);
+    <V> Future<V> execute(DelayTask<V> command);
 
 
     /**

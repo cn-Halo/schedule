@@ -4,10 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yzm</groupId>
+    <groupId>io.github.cn-halo</groupId>
     <artifactId>schedule</artifactId>
     <version>1.0-SNAPSHOT</version>
-
 
     <build>
         <plugins>
@@ -21,4 +20,109 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Internal Releases</name>
+            <url>http://58.216.212.154:8000/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Internal Releases</name>
+            <url>http://58.216.212.154:8000/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+<!--    <licenses>-->
+<!--        <license>-->
+<!--            <name>Server Side Public License</name>-->
+<!--            <url>https://www.mongodb.com/licensing/server-side-public-license</url>-->
+<!--            <distribution>repo</distribution>-->
+<!--            <comments>A not business-friendly OSS license</comments>-->
+<!--        </license>-->
+<!--    </licenses>-->
+<!--    <scm>-->
+<!--        <url>https://github.com/Fundebug/fundebug-java-notifier</url>-->
+<!--        <connection>https://github.com/Fundebug/fundebug-java-notifier.git</connection>-->
+<!--    </scm>-->
+<!--    <properties>-->
+<!--        <maven.compiler.source>1.8</maven.compiler.source>-->
+<!--        <maven.compiler.target>1.8</maven.compiler.target>-->
+<!--        <maven.deploy.skip>true</maven.deploy.skip>-->
+<!--    </properties>-->
+<!--    <developers>-->
+<!--        <developer>-->
+<!--            <name>germing</name>-->
+<!--            <id>germing</id>-->
+<!--            <email>786004470@qq.com</email>-->
+<!--            <roles>-->
+<!--                <role>Developer</role>-->
+<!--            </roles>-->
+<!--            <timezone>+8</timezone>-->
+<!--        </developer>-->
+<!--    </developers>-->
+<!--    <profiles>-->
+<!--        <profile>-->
+<!--            <id>default</id>-->
+<!--            <activation>-->
+<!--                <activeByDefault>true</activeByDefault>-->
+<!--            </activation>-->
+<!--            <build>-->
+<!--                <plugins>-->
+<!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <artifactId>maven-source-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <version>2.2.1</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <goal>jar-no-fork</goal>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <artifactId>maven-javadoc-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <version>2.9.1</version>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <goal>jar</goal>&ndash;&gt;-->
+<!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-gpg-plugin</artifactId>-->
+<!--                        <version>1.6</version>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <phase>verify</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>sign</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
+<!--                </plugins>-->
+<!--            </build>-->
+<!--            <distributionManagement>-->
+<!--                <snapshotRepository>-->
+<!--                    <id>ossrh</id>-->
+<!--                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+<!--                </snapshotRepository>-->
+<!--                <repository>-->
+<!--                    <id>ossrh</id>-->
+<!--                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+<!--                </repository>-->
+<!--            </distributionManagement>-->
+<!--        </profile>-->
+<!--    </profiles>-->
+
 </project>
