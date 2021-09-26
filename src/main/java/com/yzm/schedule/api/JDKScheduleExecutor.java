@@ -26,7 +26,7 @@ public class JDKScheduleExecutor extends AbstractScheduleExecutor {
 
     @Override
     protected <V extends FutureTaskResult> Future<V> submit(RetryTask<V> command, long delay, TimeUnit unit) {
-        System.out.println("delay "+ delay + unit.toString());
+//        System.out.println("delay "+ delay + unit.toString());
         return scheduledThreadPoolExecutor.schedule(command,delay,unit);
     }
 }
