@@ -8,11 +8,14 @@ import java.util.concurrent.TimeUnit;
  *
  * @author yzm
  */
-public interface DelayTask<V> extends Callable<V> {
+public interface DelayTask<V> extends Callable<V>, Task {
 
-     long[] delayTimes();
-     TimeUnit  timeUnit();
-     int dtIndex();
-     Object attach();
+    long[] delayTimes();
+
+    TimeUnit timeUnit();
+
+    int dtIndex();
+
+    Object attach();
 
 }

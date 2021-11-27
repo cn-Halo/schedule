@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +20,7 @@ public abstract class AbstractScheduleExecutor implements ScheduleExecutor {
         thread.start();
     }
 
-    private final LinkedBlockingQueue<Future<FutureTaskResult>> queue = new LinkedBlockingQueue();
+    private final BlockingQueue<Future<FutureTaskResult>> queue = new LinkedBlockingQueue();
 
     private final Thread thread = new Thread(new RetryTaskLoopWorker(queue, this), "delay-task-loop-thread");
 
