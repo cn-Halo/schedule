@@ -1,7 +1,7 @@
 package test;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import com.yzm.schedule.persistence.JdbcTemplate;
+import io.github.halo.jdbc.JdbcTemplate;
 
 import java.beans.PropertyVetoException;
 import java.util.List;

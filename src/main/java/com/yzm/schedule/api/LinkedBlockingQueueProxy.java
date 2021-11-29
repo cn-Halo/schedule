@@ -1,7 +1,7 @@
 package com.yzm.schedule.api;
 
 import com.yzm.schedule.persistence.DelayTaskPersistor;
-import com.yzm.schedule.persistence.JdbcTemplate;
+import io.github.halo.jdbc.JdbcTemplate;
 
 import java.util.Collection;
 import java.util.Iterator;

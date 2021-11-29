@@ -18,12 +18,32 @@ public interface DelayTask<V> extends Callable<V> {
     String taskId();
 
 
+    /**
+     * 一组延迟时间
+     *
+     * @return
+     */
     long[] delayTimes();
 
+    /**
+     * 延迟时间的单位
+     *
+     * @return
+     */
     TimeUnit timeUnit();
 
+    /**
+     * delayTimes的开始下标
+     *
+     * @return
+     */
     int dtIndex();
 
+    /**
+     * 附件
+     *
+     * @return
+     */
     Object attach();
 
 
@@ -31,11 +51,16 @@ public interface DelayTask<V> extends Callable<V> {
      * 以下系统设置 如果任务失败，重新添加到队列中保存上一个任务的引用。
      */
 
-    default DelayTask lastTask() {
-        return null;
-    }
+//    default DelayTask lastTask() {
+//        return null;
+//    }
 
 
+    /**
+     * 系统设置 持有原始任务
+     *
+     * @return
+     */
     default DelayTask originTask() {
         return this;
     }

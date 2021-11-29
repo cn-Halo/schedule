@@ -1,10 +1,9 @@
 package com.yzm.schedule.persistence;
 
-//import javax.persistence.Entity;
-//import javax.sql.DataSource;
 
 import com.yzm.schedule.api.DelayTask;
 import com.yzm.schedule.api.RetryTask;
+import io.github.halo.jdbc.JdbcTemplate;
 import io.github.halo.snowFlake.SnowFlakeUtil;
 
 import java.lang.invoke.MethodHandle;

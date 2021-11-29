@@ -2,8 +2,8 @@ package test;
 
 import com.yzm.schedule.api.JDKScheduleExecutor;
 import com.yzm.schedule.api.ScheduleExecutor;
-import com.yzm.schedule.persistence.C3p0DataSourceMetaData;
-import com.yzm.schedule.persistence.JdbcTemplate;
+import io.github.halo.jdbc.C3p0DataSourceMetaData;
+import io.github.halo.jdbc.JdbcTemplate;
 
 import java.beans.PropertyVetoException;
 
@@ -46,8 +46,8 @@ public class PersistTest {
 
         ScheduleExecutor executor = new JDKScheduleExecutor("yzm", jdbcTemplate);
 
-//        MyTask myTask = new MyTask();
-//        executor.execute(myTask);
+        MyTask myTask = new MyTask();
+        executor.execute(myTask);
 
 //        executor.execute(new RetryTask<FutureTaskResult>() {
 //            @Override
