@@ -8,11 +8,20 @@ package com.yzm.schedule.api;
 public interface FutureTaskResult {
 
     boolean success();
+
     Object data();
-    default <T extends RetryTask> T task(){
+
+    /**
+     * 用户无需设置，保存的这一次的任务
+     *
+     * @param <T>
+     * @return
+     */
+    default <T extends RetryTask> T task() {
         return null;
     }
-    default FutureTaskResult attach(){
+
+    default FutureTaskResult attach() {
         return this;
     }
 

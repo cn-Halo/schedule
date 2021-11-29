@@ -22,11 +22,11 @@
     </build>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.hibernate</groupId>-->
-<!--            <artifactId>hibernate-core</artifactId>-->
-<!--            <version>5.6.0.Final</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.hibernate</groupId>-->
+        <!--            <artifactId>hibernate-core</artifactId>-->
+        <!--            <version>5.6.0.Final</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
@@ -45,6 +45,17 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.github.halo</groupId>
+            <artifactId>snowFlake</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+        </dependency>
     </dependencies>
 
     <distributionManagement>
@@ -61,94 +72,94 @@
     </distributionManagement>
 
 
-<!--    <licenses>-->
-<!--        <license>-->
-<!--            <name>Server Side Public License</name>-->
-<!--            <url>https://www.mongodb.com/licensing/server-side-public-license</url>-->
-<!--            <distribution>repo</distribution>-->
-<!--            <comments>A not business-friendly OSS license</comments>-->
-<!--        </license>-->
-<!--    </licenses>-->
-<!--    <scm>-->
-<!--        <url>https://github.com/Fundebug/fundebug-java-notifier</url>-->
-<!--        <connection>https://github.com/Fundebug/fundebug-java-notifier.git</connection>-->
-<!--    </scm>-->
-<!--    <properties>-->
-<!--        <maven.compiler.source>1.8</maven.compiler.source>-->
-<!--        <maven.compiler.target>1.8</maven.compiler.target>-->
-<!--        <maven.deploy.skip>true</maven.deploy.skip>-->
-<!--    </properties>-->
-<!--    <developers>-->
-<!--        <developer>-->
-<!--            <name>germing</name>-->
-<!--            <id>germing</id>-->
-<!--            <email>786004470@qq.com</email>-->
-<!--            <roles>-->
-<!--                <role>Developer</role>-->
-<!--            </roles>-->
-<!--            <timezone>+8</timezone>-->
-<!--        </developer>-->
-<!--    </developers>-->
-<!--    <profiles>-->
-<!--        <profile>-->
-<!--            <id>default</id>-->
-<!--            <activation>-->
-<!--                <activeByDefault>true</activeByDefault>-->
-<!--            </activation>-->
-<!--            <build>-->
-<!--                <plugins>-->
-<!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <artifactId>maven-source-plugin</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <version>2.2.1</version>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <goal>jar-no-fork</goal>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <artifactId>maven-javadoc-plugin</artifactId>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <version>2.9.1</version>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <goal>jar</goal>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
-<!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
-<!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
-<!--                    <plugin>-->
-<!--                        <groupId>org.apache.maven.plugins</groupId>-->
-<!--                        <artifactId>maven-gpg-plugin</artifactId>-->
-<!--                        <version>1.6</version>-->
-<!--                        <executions>-->
-<!--                            <execution>-->
-<!--                                <phase>verify</phase>-->
-<!--                                <goals>-->
-<!--                                    <goal>sign</goal>-->
-<!--                                </goals>-->
-<!--                            </execution>-->
-<!--                        </executions>-->
-<!--                    </plugin>-->
-<!--                </plugins>-->
-<!--            </build>-->
-<!--            <distributionManagement>-->
-<!--                <snapshotRepository>-->
-<!--                    <id>ossrh</id>-->
-<!--                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
-<!--                </snapshotRepository>-->
-<!--                <repository>-->
-<!--                    <id>ossrh</id>-->
-<!--                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
-<!--                </repository>-->
-<!--            </distributionManagement>-->
-<!--        </profile>-->
-<!--    </profiles>-->
+    <!--    <licenses>-->
+    <!--        <license>-->
+    <!--            <name>Server Side Public License</name>-->
+    <!--            <url>https://www.mongodb.com/licensing/server-side-public-license</url>-->
+    <!--            <distribution>repo</distribution>-->
+    <!--            <comments>A not business-friendly OSS license</comments>-->
+    <!--        </license>-->
+    <!--    </licenses>-->
+    <!--    <scm>-->
+    <!--        <url>https://github.com/Fundebug/fundebug-java-notifier</url>-->
+    <!--        <connection>https://github.com/Fundebug/fundebug-java-notifier.git</connection>-->
+    <!--    </scm>-->
+    <!--    <properties>-->
+    <!--        <maven.compiler.source>1.8</maven.compiler.source>-->
+    <!--        <maven.compiler.target>1.8</maven.compiler.target>-->
+    <!--        <maven.deploy.skip>true</maven.deploy.skip>-->
+    <!--    </properties>-->
+    <!--    <developers>-->
+    <!--        <developer>-->
+    <!--            <name>germing</name>-->
+    <!--            <id>germing</id>-->
+    <!--            <email>786004470@qq.com</email>-->
+    <!--            <roles>-->
+    <!--                <role>Developer</role>-->
+    <!--            </roles>-->
+    <!--            <timezone>+8</timezone>-->
+    <!--        </developer>-->
+    <!--    </developers>-->
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            <id>default</id>-->
+    <!--            <activation>-->
+    <!--                <activeByDefault>true</activeByDefault>-->
+    <!--            </activation>-->
+    <!--            <build>-->
+    <!--                <plugins>-->
+    <!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <artifactId>maven-source-plugin</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <version>2.2.1</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <goal>jar-no-fork</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <plugin>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <groupId>org.apache.maven.plugins</groupId>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <artifactId>maven-javadoc-plugin</artifactId>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <version>2.9.1</version>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <phase>package</phase>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                    <goal>jar</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                </goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        </executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    </plugin>&ndash;&gt;-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>org.apache.maven.plugins</groupId>-->
+    <!--                        <artifactId>maven-gpg-plugin</artifactId>-->
+    <!--                        <version>1.6</version>-->
+    <!--                        <executions>-->
+    <!--                            <execution>-->
+    <!--                                <phase>verify</phase>-->
+    <!--                                <goals>-->
+    <!--                                    <goal>sign</goal>-->
+    <!--                                </goals>-->
+    <!--                            </execution>-->
+    <!--                        </executions>-->
+    <!--                    </plugin>-->
+    <!--                </plugins>-->
+    <!--            </build>-->
+    <!--            <distributionManagement>-->
+    <!--                <snapshotRepository>-->
+    <!--                    <id>ossrh</id>-->
+    <!--                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+    <!--                </snapshotRepository>-->
+    <!--                <repository>-->
+    <!--                    <id>ossrh</id>-->
+    <!--                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+    <!--                </repository>-->
+    <!--            </distributionManagement>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
 
 </project>

@@ -1,21 +1,37 @@
 ## 支持一组延迟时间，并带有失败重试机制延迟执行器
+
 ### 具有以下功能
+
 - 失败重试
 - 一组延迟执行
-
 
 ## 组件
 
 ### RetryTask
-> 带有失败重试机制的延迟任务 
-#### delayTimes 
+
+> 带有失败重试机制的延迟任务
+
+#### delayTimes
+
 - 一个long类型的数组，支持设置一组延迟时间，数组中的每个延迟时间是相对于第一次的添加任务时间而言的。
 - 数组的长度代表了最大的执行次数，当某一次任务的结果FutureTaskResult.success()返回true。则代表任务执行成功，后续的延迟将不在执行。
 - 添加任务时，会对原任务进行拷贝，防止执行过程中任务数据被篡改。原任务可以从FutureTaskResult.attach()附件中获取。
+
 ### DelayTask
-普通的延迟队列任务
+
+- 普通的延迟队列任务
+
+## todo
+
+- submit返回Future的包装类，需要携带原任务。
+- 重新加载执行的持久化任务 附件attach会丢失。
+
+## 注意事项
+
+- 不允许RetryTask和DelayTask的实现不能使用匿名内部类。且必须带有无参的构造函数。否则，会影响到任务持久化恢复中通过方法句柄找方法。
 
 ## 用法
+
 ```
    ScheduleExecutor executor = new JDKScheduleExecutor();
         executor.execute(new RetryTask<FutureTaskResult>() {
@@ -61,13 +77,14 @@
 
 ```
 
+## 后续将支持任务的持久化和监控
 
-## 后续将支持任务的持久化和监控   
 ## BUG 提交获取到的future只是第一次提交任务的时候获取到的
 
-
 ## 2021-09-26
+
 ### call()方法中抛出异常 会导致死循环抛出异常
+
 ```
     
 FutureTaskResult result = future.get();

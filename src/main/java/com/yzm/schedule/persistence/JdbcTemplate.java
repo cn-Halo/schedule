@@ -1,6 +1,8 @@
 package com.yzm.schedule.persistence;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.sun.deploy.util.BlackList;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -115,7 +117,16 @@ public class JdbcTemplate {
     }
 
 
-    public ResultSet execute(String sql) {
+    public boolean execute(String sql) {
+        return execute(new StatementCallback<Boolean>() {
+            @Override
+            public Boolean doInStatement(Statement statement) throws SQLException {
+                return statement.execute(sql);
+            }
+        });
+    }
+
+    public ResultSet executeQuery(String sql) {
         return execute(new StatementCallback<ResultSet>() {
             @Override
             public ResultSet doInStatement(Statement statement) throws SQLException {
@@ -134,6 +145,22 @@ public class JdbcTemplate {
                 }
                 int[] r = statement.executeBatch();
                 return r;
+            }
+        });
+    }
+
+
+    public boolean isTableExist(String tableName) {
+        return execute(new ConnectionCallback<Boolean>() {
+            @Override
+            public Boolean doInConnection(Connection connection) throws SQLException {
+                ResultSet rs = connection.getMetaData().getTables(null, null, tableName, null);
+                if (rs.next()) {
+                    return true;
+                } else {
+                    return false;
+                }
+
             }
         });
     }

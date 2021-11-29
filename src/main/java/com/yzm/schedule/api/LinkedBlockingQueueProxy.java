@@ -1,5 +1,8 @@
 package com.yzm.schedule.api;
 
+import com.yzm.schedule.persistence.DelayTaskPersistor;
+import com.yzm.schedule.persistence.JdbcTemplate;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
@@ -14,13 +17,24 @@ import java.util.concurrent.TimeUnit;
 public class LinkedBlockingQueueProxy implements BlockingQueue {
 
     private LinkedBlockingQueue queue;
+    private DelayTaskPersistor delayTaskPersistor;
 
     public LinkedBlockingQueueProxy() {
         queue = new LinkedBlockingQueue();
     }
 
+    public LinkedBlockingQueueProxy(ScheduleExecutor executor, String executorName, JdbcTemplate jdbcTemplate) {
+        this();
+        delayTaskPersistor = new DelayTaskPersistor(executor, executorName, jdbcTemplate);
+    }
+
+    public DelayTaskPersistor getDelayTaskPersistor() {
+        return this.delayTaskPersistor;
+    }
+
     @Override
     public boolean add(Object o) {
+        if (delayTaskPersistor != null) delayTaskPersistor.add(o);
         return queue.add(o);
     }
 
@@ -61,7 +75,9 @@ public class LinkedBlockingQueueProxy implements BlockingQueue {
 
     @Override
     public Object take() throws InterruptedException {
-        return queue.take();
+        Object o = queue.take();
+        if (delayTaskPersistor != null) delayTaskPersistor.remove(o);
+        return o;
     }
 
     @Override
@@ -76,6 +92,7 @@ public class LinkedBlockingQueueProxy implements BlockingQueue {
 
     @Override
     public boolean remove(Object o) {
+        if (delayTaskPersistor != null) delayTaskPersistor.remove(o);
         return queue.remove(o);
     }
 

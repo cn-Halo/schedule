@@ -2,6 +2,7 @@ package com.yzm.schedule.api;
 
 
 
+import com.yzm.schedule.persistence.DelayTaskPersistor;
 import com.yzm.schedule.timeWheel.WheelTimer;
 
 import java.util.concurrent.Future;
@@ -15,6 +16,11 @@ import java.util.concurrent.TimeUnit;
 public class TimeWheelScheduleExecutor extends AbstractScheduleExecutor {
 
     WheelTimer wheelTimer = new WheelTimer();
+
+    @Override
+    protected void setTaskPersistor(DelayTaskPersistor delayTaskPersistor) {
+
+    }
 
     @Override
     protected <V extends FutureTaskResult> Future<V> submit(RetryTask<V> command, long delay, TimeUnit unit) {

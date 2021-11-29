@@ -126,6 +126,16 @@ public class RetryTaskLoopWorker implements Runnable {
             public Object attach() {
                 return task.attach();
             }
+
+            @Override
+            public String taskId() {
+                return task.taskId();
+            }
+
+            @Override
+            public DelayTask originTask() {
+                return task.originTask();
+            }
         };
     }
 }
