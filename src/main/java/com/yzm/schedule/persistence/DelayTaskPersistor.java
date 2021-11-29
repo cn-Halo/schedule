@@ -13,6 +13,8 @@ import java.util.concurrent.FutureTask;
 
 /**
  * Created on 2021/11/27.
+ * <p>
+ * 持久器
  *
  * @author yzm
  */
@@ -25,6 +27,7 @@ public class DelayTaskPersistor {
     public DelayTaskPersistor(ScheduleExecutor executor, String executorName, JdbcTemplate jdbcTemplate) {
         delayTaskDao = new DelayTaskDao(executorName, jdbcTemplate);
         delayTaskHistoryDao = new DelayTaskHistoryDao(executorName, jdbcTemplate);
+        delayTaskDao.setDelayTaskHistoryDao(delayTaskHistoryDao);
         this.executor = executor;
     }
 

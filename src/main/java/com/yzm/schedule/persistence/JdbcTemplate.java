@@ -1,8 +1,6 @@
 package com.yzm.schedule.persistence;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
-import com.sun.deploy.util.BlackList;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;

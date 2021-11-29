@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class DelayTaskDao {
     private JdbcTemplate jdbcTemplate;
     private String executorName;
+    private DelayTaskHistoryDao taskHistoryDao;
     private static final String TABLE_NAME = "sch_delay_task";
     private static final String CREATE_TABLE_SQl = "create table " + TABLE_NAME +
             "(id varchar(255) primary key, executorName varchar(255),taskId varchar(255) , delayTimes varchar(255) , " +
@@ -43,6 +44,9 @@ public class DelayTaskDao {
         initTable();
     }
 
+    public void setDelayTaskHistoryDao(DelayTaskHistoryDao delayTaskHistoryDao) {
+        this.taskHistoryDao = delayTaskHistoryDao;
+    }
 
     /**
      * 加载任务中断的持久化任务。
@@ -67,10 +71,17 @@ public class DelayTaskDao {
             String taskId = String.valueOf(data.get("taskId"));
             String timeUnit = String.valueOf(data.get("timeUnit"));
             int dtIndex = Integer.valueOf(String.valueOf(data.get("dtIndex")));
+
+            /**
+             * 在历史表中查找最初的任务，然后根据最初的任务使用方法句柄去找原始任务。
+             * 以防止加载 重加载的任务（即PersistDelayTask）会丢失原始任务。
+             */
+            List<Map<String, Object>> historyList = taskHistoryDao.queryByTaskId(taskId);
+            Map<String, Object> historyFirstTask = historyList.get(0);
             try {
-                Class taskClass = Class.forName(String.valueOf(data.get("taskClassName")));
-                Class methodReturnType = Class.forName(String.valueOf(data.get("methodReturnType")));
-                String methodName = String.valueOf(data.get("methodName"));
+                Class taskClass = Class.forName(String.valueOf(historyFirstTask.get("taskClassName")));
+                Class methodReturnType = Class.forName(String.valueOf(historyFirstTask.get("methodReturnType")));
+                String methodName = String.valueOf(historyFirstTask.get("methodName"));
                 MethodType methodType = MethodType.methodType(methodReturnType);
                 MethodHandle callMethodHandle = MethodHandles.lookup().findVirtual(taskClass, methodName, methodType).bindTo(taskClass.newInstance());
 

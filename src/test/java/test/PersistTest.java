@@ -28,7 +28,9 @@ public class PersistTest {
 
             @Override
             public String jdbcUrl() {
-                return "jdbc:mysql://localhost:3306/schedule?useUnicode=true&characterEncoding=UTF-8";
+//                return "jdbc:mysql://localhost:3306/schedule?useUnicode=true&characterEncoding=UTF-8";
+                return "jdbc:mysql://192.168.1.209:13306/schedule?useUnicode=true&characterEncoding=UTF-8";
+
             }
 
             @Override
@@ -44,8 +46,8 @@ public class PersistTest {
 
         ScheduleExecutor executor = new JDKScheduleExecutor("yzm", jdbcTemplate);
 
-        MyTask myTask = new MyTask();
-        executor.execute(myTask);
+//        MyTask myTask = new MyTask();
+//        executor.execute(myTask);
 
 //        executor.execute(new RetryTask<FutureTaskResult>() {
 //            @Override

@@ -72,11 +72,9 @@ public class PersistDelayTask implements RetryTask<FutureTaskResult> {
     public FutureTaskResult call() throws Exception {
         try {
             //todo 当执行是已经从数据库加载过一次的任务，那么methodHandle将丢失。需要保留原始任务的方法句柄。
-            if (methodHandle == null) {
-                return null;
-            }
             return (FutureTaskResult) methodHandle.invoke();
         } catch (Throwable e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
     }

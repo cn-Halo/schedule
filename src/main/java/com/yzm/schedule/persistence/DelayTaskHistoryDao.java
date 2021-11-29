@@ -7,6 +7,7 @@ import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yzm
@@ -38,7 +39,9 @@ public class DelayTaskHistoryDao {
         boolean rs = jdbcTemplate.isTableExist(TABLE_NAME);
         if (!rs) {
             jdbcTemplate.execute(CREATE_TABLE_SQl);
-            jdbcTemplate.executeQuery(CREATE_INDEX_SQL);
+            System.out.println("sql："+CREATE_TABLE_SQl);
+            jdbcTemplate.execute(CREATE_INDEX_SQL);
+            System.out.println("sql："+CREATE_INDEX_SQL);
         }
     }
 
@@ -76,6 +79,12 @@ public class DelayTaskHistoryDao {
         System.out.println("sql：" + sql);
 
         jdbcTemplate.executeBatch(sql);
+    }
+
+    public List<Map<String, Object>> queryByTaskId(String taskId) {
+        String sqlFormat = "select * from " + TABLE_NAME + " where  executorName = '%s' and taskId = '%s' order by id asc";
+        String sql = String.format(sqlFormat, executorName, taskId);
+        return jdbcTemplate.queryForListMap(sql);
     }
 
 
