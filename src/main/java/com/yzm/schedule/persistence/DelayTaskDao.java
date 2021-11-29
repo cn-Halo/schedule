@@ -44,6 +44,11 @@ public class DelayTaskDao {
     }
 
 
+    /**
+     * 加载任务中断的持久化任务。
+     *
+     * @return
+     */
     public List<RetryTask> loadTask() {
         String sql = "select * from  " + TABLE_NAME;
         List<Map<String, Object>> list = jdbcTemplate.queryForListMap(sql);

@@ -25,6 +25,8 @@ public class DelayTaskHistoryDao {
             "(id,executorName,taskId,delayTimes,timeUnit,dtIndex,createTime,methodReturnType,methodName,taskClassName) " +
             "values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s');";
 
+    private static final String CREATE_INDEX_SQL = "CREATE INDEX index_taskId ON " + TABLE_NAME + " (taskId)";
+
 
     public DelayTaskHistoryDao(String executorUniqueName, JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -36,6 +38,7 @@ public class DelayTaskHistoryDao {
         boolean rs = jdbcTemplate.isTableExist(TABLE_NAME);
         if (!rs) {
             jdbcTemplate.execute(CREATE_TABLE_SQl);
+            jdbcTemplate.executeQuery(CREATE_INDEX_SQL);
         }
     }
 
